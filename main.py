@@ -1,21 +1,24 @@
 import socket
 import struct
+from multiprocessing import Pool
 
-def port_scan(ip_address, start_port, end_port):
-    open_ports = []
-    for port in range(start_port, end_port + 1):
-        try:
-            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.settimeout(1)
-            result = sock.connect_ex((ip_address, port))
-            if result == 0:
-                open_ports.append(port)
-            sock.close()
-        except socket.gaierror:
-            print("Hedef adı çözümlenemedi. Lütfen doğru bir hedef girin.")
-        except socket.error:
-            print("Sunucuya bağlanırken bir hata oluştu.")
-    return open_ports
+def scan_port(ip_port):
+    ip_address, port = ip_port
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(1)
+        result = sock.connect_ex((ip_address, port))
+        if result == 0:
+            return port
+        sock.close()
+    except (socket.gaierror, socket.error):
+        pass  # Hata durumlarını burada ele alabilirsiniz
+
+def port_scan(ip_address, start_port, end_port, num_processes=4):
+    ip_ports = [(ip_address, port) for port in range(start_port, end_port + 1)]
+    with Pool(processes=num_processes) as pool:
+        open_ports = pool.map(scan_port, ip_ports)
+    return [port for port in open_ports if port is not None]
 
 def service_scan(ip_address, ports):
     for port in ports:
@@ -76,21 +79,27 @@ while True:
     print("----------------")
     print("| Welcome PMap |")
     print("----------------")
-    ip_address = input("Hedef IP adresini girin: ")
-    start_port = int(input("Başlangıç portunu girin: "))
-    end_port = int(input("Bitiş portunu girin: "))
 
     selected_Mode = selection_Mode()
     if selected_Mode == '1':
         print("Service Scan seçildi.")
+        ip_address = input("Hedef IP adresini girin: ")
+        start_port = int(input("Başlangıç portunu girin: "))
+        end_port = int(input("Bitiş portunu girin: "))
         open_ports = port_scan(ip_address, start_port, end_port)
         service_scan(ip_address, open_ports)
     elif selected_Mode == '2':
         print("TCP Scan seçildi.")
+        ip_address = input("Hedef IP adresini girin: ")
+        start_port = int(input("Başlangıç portunu girin: "))
+        end_port = int(input("Bitiş portunu girin: "))
         port_scan(ip_address,start_port,end_port)
+        print(open_ports)
     elif selected_Mode == '3':
         print("Operation Scan seçildi.")
-        os_detection(ip_address)
+        ip_address = input("Hedef IP adresini girin: ")
+        os_info=os_detection(ip_address)
+        print(os_info)
     elif selected_Mode == '4':
         print("Exiting...")
         break
