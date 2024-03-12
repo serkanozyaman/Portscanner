@@ -1,24 +1,26 @@
 import socket
 import struct
-from multiprocessing import Pool
+from multiprocessing import Pool, Manager
 
-def scan_port(ip_port):
+def scan_port(ip_port, open_ports):
     ip_address, port = ip_port
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(1)
         result = sock.connect_ex((ip_address, port))
         if result == 0:
-            return port
+            open_ports.append(port)
         sock.close()
     except (socket.gaierror, socket.error):
-        pass  # Hata durumlarını burada ele alabilirsiniz
+        pass
 
 def port_scan(ip_address, start_port, end_port, num_processes=4):
+    manager = Manager()
+    open_ports = manager.list()
     ip_ports = [(ip_address, port) for port in range(start_port, end_port + 1)]
     with Pool(processes=num_processes) as pool:
-        open_ports = pool.map(scan_port, ip_ports)
-    return [port for port in open_ports if port is not None]
+        pool.starmap(scan_port, [(ip_port, open_ports) for ip_port in ip_ports])
+    return open_ports
 
 def service_scan(ip_address, ports):
     for port in ports:
