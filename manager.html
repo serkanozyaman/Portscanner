@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneli</title>
+    <link rel="stylesheet" href="assets/css/manager.css">
+</head>
+<body>
+
+    <h1>Admin Paneli</h1>
+
+    <header>
+        <img
+            src="assets/img/penteguard.png"
+            alt="Uygulama Logosu"
+            class="app-logo"
+        />
+        <div class="user-menu">
+            <span id="username">PenteGuard</span>
+            <div class="dropdown">
+                <a href="settings.html">Ayarlar</a>
+                <a href="#" id="logout">Çıkış Yap</a>
+            </div>
+        </div>
+    </header>
+    <div class="ticket-container">
+        <h2>Oluşturduğun Ticketler</h2>
+        <table class="ticket-table" id="notification-table">
+            <thead>
+                <tr>
+                    <th>Bildirim ID</th>
+                    <th>Kullanıcı</th>
+                    <th>Olay Türü</th>
+                    <th>Tespit Tarihi</th>
+                    <th>Durum</th>
+                    <th>Admin Yorumu</th>
+                    <th>Detay</th>
+                    <th>Düzenle</th>
+                </tr>
+            </thead>
+            <tbody id="ticket-body">
+                <!-- Ticket verileri buraya eklenecek -->
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- Detay Modali -->
+    <div id="detail-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDetailModal()">&times;</span>
+            <h2>Bildirim Detayları</h2>
+            <p id="detail-content"></p>
+        </div>
+    </div>
+
+    <!-- Düzenleme Modali -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditModal()">&times;</span>
+            <h2>Bildirim Düzenle</h2>
+            <label for="status-select">Durum:</label>
+            <select id="status-select">
+                <option value="Bekliyor">Bekliyor</option>
+                <option value="İnceleniyor">Bekliyor</option>
+                <option value="Onaylandı">Onaylandı</option>
+                <option value="Reddedildi">Reddedildi</option>
+            </select>
+
+            <label for="admin-comment">Admin Yorumu:</label>
+            <textarea id="admin-comment"></textarea>
+
+            <button id="save-btn">Kaydet</button>
+        </div>
+    </div>
+
+    <script src="assets/js/manager.js"></script>
+</body>
+</html>
