@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap / Kayıt Ol</title>
+    <link rel="stylesheet" href="assets/css/manager_login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-box" id="login-box">
+            <h2>Giriş Yap</h2>
+            <form id="login-form">
+                <input type="text" id="login-username" placeholder="Kullanıcı Adı" required>
+                <input type="password" id="login-password" placeholder="Şifre" required>
+                <button type="submit">Giriş Yap</button>
+                <p>Hesabın yok mu? <a href="#" onclick="toggleForm()">Kayıt Ol</a></p>
+            </form>
+        </div>
+
+        <div class="form-box" id="register-box">
+            <h2>Kayıt Ol</h2>
+            <form id="register-form">
+                <input type="text" id="register-firstname" placeholder="İsim" required>
+                <input type="text" id="register-lastname" placeholder="Soyisim" required>
+                <input type="text" id="register-username" placeholder="Kullanıcı Adı" required>
+                <input type="email" id="register-email" placeholder="E-posta" required>
+                <input type="password" id="register-password" placeholder="Şifre" required>
+                <input type="text" id="register-phone" placeholder="Telefon" required>
+                <button type="submit" disabled>Kayıt Ol</button>
+                <p>Zaten hesabın var mı? <a href="#" onclick="toggleForm()">Giriş Yap</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/manager_login.js"></script>
+</body>
+</html>

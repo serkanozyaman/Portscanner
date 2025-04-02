@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bildirim Oluştur</title>
+        <link rel="stylesheet" href="assets/css/ticket.css" />
+    </head>
+    <body>
+        <div class="modal" id="ticketFormModal">
+            <div class="modal-content">
+                <span class="close" id="close-ticket-form">&times;</span>
+                <h2>Bildirim Oluştur</h2>
+
+                <div class="progress-bar">
+                    <div class="step active">1</div>
+                    <div class="step">2</div>
+                    <div class="step">3</div>
+                </div>
+
+                <form id="ticket-form">
+                    <div class="form-step active" id="step-1">
+                        <label for="event-type">Olay Türü:</label>
+                        <select id="event-type">
+                            <option value="">Seçiniz...</option>
+                            <option value="DDoS">DDoS Saldırısı</option>
+                            <option value="Yetkisiz Erişim">
+                                Yetkisiz Erişim
+                            </option>
+                            <option value="Malware">Zararlı Yazılım</option>
+                            <option value="Diğer">Diğer</option>
+                        </select>
+
+                        <label for="short-description">Olayın Kısa Tanımı:</label>
+                        <input type="text" id="short-description" />
+
+                        <label for="start-date">Olayın Başlangıç Tarihi:</label>
+                        <input type="datetime-local" id="start-date" />
+                        
+                        <label for="detect-date">Olayın Tespit Edildiği Tarih:</label>
+                        <input type="datetime-local" id="detect-date" />
+                        
+
+                        <label for="detection-method"
+                            >Olayın Tespit Edilme Yöntemi:</label
+                        >
+                        <input type="text" id="detection-method" />
+
+                        <button type="button" class="step-button" data-step="2">
+                            Sonraki
+                        </button>
+                    </div>
+
+                    <div class="form-step" id="step-2">
+                        <label for="system-downtime"
+                            >Olay Sistem Kesintisine Sebep Oldu mu?</label
+                        >
+                        <select id="system-downtime">
+                            <option value="Evet">Evet</option>
+                            <option value="Hayır">Hayır</option>
+                        </select>
+
+                        <label for="affected-systems"
+                            >Etkilenen Sistemler:</label
+                        >
+                        <input type="text" id="affected-systems" />
+
+                        <label for="log-detection"
+                            >Siber Olaylara Ait İz Kayıtları Tespit Edildi
+                            mi?</label
+                        >
+                        <select id="log-detection">
+                            <option value="Evet">Evet</option>
+                            <option value="Hayır">Hayır</option>
+                        </select>
+
+                        <label for="countermeasures"
+                            >Alınan Karşı Önlemler:</label
+                        >
+                        <textarea id="countermeasures"></textarea>
+
+                        <label for="additional-info"
+                            >Eklemek İstedikleriniz:</label
+                        >
+                        <textarea id="additional-info"></textarea>
+
+                        <button type="button" class="step-button" data-step="1">
+                            Geri
+                        </button>
+                        <button type="button" class="step-button" data-step="3">
+                            Sonraki
+                        </button>
+                    </div>
+
+                    <div class="form-step" id="step-3">
+                        <h3>Önizleme</h3>
+                        <p>
+                            <strong>Olay Türü:</strong>
+                            <span id="preview-event-type"></span>
+                        </p>
+                        <p>
+                            <strong>Olayın Kısa Tanımı:</strong>
+                            <span id="preview-short-description"></span>
+                        </p>
+                        <p>
+                            <strong>Olayın Başlangıç Tarihi:</strong>
+                            <span id="preview-start-date"></span>
+                        </p>
+                        <p>
+                            <strong>Olayın Tespit Edildiği Tarih:</strong>
+                            <span id="preview-detect-date"></span>
+                        </p>
+                        <p>
+                            <strong>Olayın Tespit Edilme Yöntemi:</strong>
+                            <span id="preview-detection-method"></span>
+                        </p>
+                        <p>
+                            <strong
+                                >Olay Sistem Kesintisine Sebep Oldu mu?</strong
+                            >
+                            <span id="preview-system-downtime"></span>
+                        </p>
+                        <p>
+                            <strong>Etkilenen Sistemler:</strong>
+                            <span id="preview-affected-systems"></span>
+                        </p>
+                        <p>
+                            <strong>Siber Olay İz Kayıtları:</strong>
+                            <span id="preview-log-detection"></span>
+                        </p>
+                        <p>
+                            <strong>Alınan Karşı Önlemler:</strong>
+                            <span id="preview-countermeasures"></span>
+                        </p>
+                        <p>
+                            <strong>Ek Bilgiler:</strong>
+                            <span id="preview-additional-info"></span>
+                        </p>
+
+                        <button type="button" class="step-button" data-step="2">
+                            Geri
+                        </button>
+                        <button type="submit">Gönder</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="assets/js/ticket.js"></script>
+    </body>
+</html>

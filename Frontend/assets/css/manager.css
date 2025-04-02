@@ -1,0 +1,237 @@
+/* Genel Stil */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    padding: 20px;
+}
+
+
+.user-menu {
+    position: relative;
+    cursor: pointer;
+}
+
+#username {
+    padding-right: 50px;
+    color: #fff;
+}
+
+.user-menu .dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #222;
+    border: 1px solid #333;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 100;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.user-menu .dropdown.active {
+    display: block;
+}
+
+.user-menu .dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.user-menu .dropdown li {
+    border-bottom: 1px solid #333;
+}
+
+.user-menu .dropdown li:last-child {
+    border-bottom: none;
+}
+
+.user-menu .dropdown a {
+    display: block;
+    padding: 10px 15px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.user-menu .dropdown a:hover {
+    background-color: #ff8400;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Logo için */
+.app-logo {
+    height: 50px; /* Yüksekliği ayarlayabilirsin */
+    width: auto; /* Oranı bozmamak için genişliği otomatik bırak */
+}
+
+/* Tablo Stili */
+.ticket-container {
+    margin-top: 20px;
+    padding: 15px;
+    background: #222;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.ticket-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 15px !important;
+}
+
+.ticket-table th, .ticket-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+.ticket-table th {
+    background: #ff6600;
+    color: #fff;
+}
+
+.ticket-table tr:nth-child(even) {
+    background: #333;
+}
+
+.ticket-table tr:hover {
+    background: #444;
+}
+
+/* Durum rengi */
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.status-beklemede { background: #ffcc00; color: #222; }
+.status-incelendi { background: #3399ff; color: white; }
+.status-onaylandi { background: #33cc33; color: white; }
+.status-reddedildi { background: #cc3333; color: white; }
+
+/* Buton Stilleri */
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease-in-out;
+}
+
+.details {
+    background-color: #ff9800;
+    color: black;
+}
+
+.details:hover {
+    background-color: #e68900;
+}
+
+.edit {
+    background-color: #2196f3;
+    color: white;
+}
+
+.edit:hover {
+    background-color: #1976d2;
+}
+
+
+
+
+/* Modal Stili */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+    width: 400px;
+}
+
+.modal h2 {
+    color: #ff9800;
+    margin-bottom: 10px;
+}
+
+.modal-content {
+    color: #ccc;
+}
+
+.modal label {
+    display: block;
+    margin-top: 10px;
+    color: #ff9800;
+}
+
+.modal select, .modal textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    background-color: #444;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 5px;
+}
+
+.modal textarea {
+    height: 80px;
+    resize: none;
+}
+
+.modal-buttons {
+    margin-top: 15px;
+    text-align: right;
+}
+
+.close-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.close-btn:hover {
+    background-color: #d32f2f;
+}
+
+.save-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.save-btn:hover {
+    background-color: #388e3c;
+}

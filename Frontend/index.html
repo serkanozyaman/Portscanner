@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="assets/css/index.css" />
+    </head>
+    <body>
+        <header>
+            <img
+                src="assets/img/penteguard.png"
+                alt="Uygulama Logosu"
+                class="app-logo"
+            />
+            <div class="user-menu">
+                <span id="username">Serkan Özyaman</span>
+                <div class="dropdown">
+                    <a href="settings.html">Ayarlar</a>
+                    <a href="#" id="logout">Çıkış Yap</a>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="siem-container">
+                <div class="siem-option">
+                    <img src="assets/img/Wazuh.png" alt="SIEM 3">
+                    <button id="wazuh-buton" class="detail-btn">Wazuh</button>
+                </div>
+                <!-- <div class="siem-option">
+                <img src="assets/img/graylog.jpg" alt="SIEM 1">
+                <p>Graylog</p>
+            </div>
+            <div class="siem-option">
+                <img src="assets/img/splunk.png" alt="SIEM 2">
+                <p>Splunk</p>
+            </div>
+            <div class="siem-option">
+                <img src="assets/img/Wazuh.png" alt="SIEM 3">
+                <p>Wazuh</p>
+            </div> -->
+            </div>
+            <!-- Ticket List Section -->
+            <div><button id="ticket-button">Bildirim Oluştur</button></div>
+
+            <!-- Boş Modal Kutusu -->
+            <div id="ticketFormModal" class="modal">
+                <div id="ticketFormContainer"></div>
+                <!-- Buraya `ticket.html` yüklenecek -->
+            </div>
+
+            <div class="ticket-container">
+                <h2>Oluşturduğun Ticketler</h2>
+                <table class="ticket-table">
+                    <thead>
+                        <tr>
+                            <th>Ticket ID</th>
+                            <th>Açılma Tarihi</th>
+                            <th>Kısa Açıklama</th>
+                            <th>Durum</th>
+                            <th>Detay</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ticket-body">
+                        <!-- Ticket verileri buraya eklenecek -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pop-up Modal -->
+            <div id="ticketModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Ticket Detayları</h2>
+                    <p>
+                        <strong>Ticket ID:</strong>
+                        <span id="modal-ticket-id"></span>
+                    </p>
+                    <p>
+                        <strong>Açılma Tarihi:</strong>
+                        <span id="modal-ticket-date"></span>
+                    </p>
+                    <p>
+                        <strong>Kısa Açıklama:</strong>
+                        <span id="modal-ticket-desc"></span>
+                    </p>
+                    <p>
+                        <strong>Durum:</strong>
+                        <span id="modal-ticket-status"></span>
+                    </p>
+                    <p>
+                        <strong>Detaylı Açıklama:</strong>
+                        <span id="modal-ticket-details"></span>
+                    </p>
+                </div>
+            </div>
+        </main>
+        <script src="assets/js/index.js"></script>
+    </body>
+</html>
